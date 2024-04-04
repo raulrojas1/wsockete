@@ -5,7 +5,8 @@ var app = express();
 const server = http.createServer(app);
 const socketio = require("socket.io")(server,{
     cors: {
-        origins: '*',
+        // origins: '*',
+        origins: ['http://*'],
         allowedHeaders: ['sala','token_base']
     }
 });
@@ -24,6 +25,6 @@ app.post("/emit", (req, res) => {
 });
 const socketEvents = require("./socketmethods");
 socketEvents.setup(socketio);
-server.listen(4001,()=>{
-    console.log('Listening on port 4001');
+server.listen(4000,()=>{
+    console.log('Escucha on port 4000');
 });
